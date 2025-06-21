@@ -1,7 +1,7 @@
 # Doc+
 
 ## Project Overview
-**Doc+** is a modern, user-friendly platform that simplifies the process of booking and managing doctor appointments. It serves as a bridge between patients and healthcare providers, offering an intuitive interface for seamless scheduling, real-time updates, and secure payments. With a focus on accessibility and efficiency, DocTalk is designed to enhance the patient experience while empowering doctors with better appointment management tools.
+**Doc+** is a modern, user-friendly platform that simplifies the process of booking and managing doctor appointments. It serves as a bridge between patients and healthcare providers, offering an intuitive interface for seamless scheduling, real-time updates, and secure payments. With a focus on accessibility and efficiency, Doc+ is designed to enhance the patient experience while empowering doctors with better appointment management tools.
 
 ### Main Goal
 The primary goal of **Doc+** is to create a streamlined, secure, and efficient healthcare ecosystem. It enables patients to connect with doctors effortlessly while giving healthcare providers a robust platform to manage their schedules. **Doc+** focuses on reducing waiting times, enhancing patient satisfaction, and ensuring smooth operations in the medical field.
