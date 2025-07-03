@@ -2,17 +2,20 @@ import React, { useContext, useState, useEffect } from 'react'
 import { assets } from '../assets/assets'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
-import { Sun, Moon } from 'lucide-react'
+import { Sun, Moon, ChevronDown, X, Menu } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Navbar = () => {
   const navigate = useNavigate()
   const [showMenu, setShowMenu] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const { token, setToken, userData } = useContext(AppContext)
   const [isDark, setIsDark] = useState(() =>
     localStorage.theme === 'dark' ||
     (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
   )
 
+  // Dark mode toggle effect
   useEffect(() => {
     const html = document.documentElement
     if (isDark) {
@@ -27,80 +30,254 @@ const Navbar = () => {
   const logout = () => {
     localStorage.removeItem('token')
     setToken(false)
+    setIsDropdownOpen(false)
   }
 
   const DarkModeToggle = () => (
-    <button
+    <motion.button
       onClick={() => setIsDark(!isDark)}
-      className="flex items-center justify-center w-9 h-9 border rounded-full transition-all hover:scale-105 bg-white dark:bg-[#1f1f1f] shadow"
+      className="flex items-center justify-center w-10 h-10 rounded-full transition-all"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       aria-label="Toggle Dark Mode"
     >
-      {isDark ? <Sun size={18} className="text-yellow-400" /> : <Moon size={18} className="text-gray-700" />}
-    </button>
+      <motion.div 
+        className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-sm"
+        animate={{ rotate: isDark ? 360 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {isDark ? (
+          <Sun size={18} className="text-yellow-400" />
+        ) : (
+          <Moon size={18} className="text-gray-700" />
+        )}
+      </motion.div>
+    </motion.button>
   )
 
+  const navLinks = [
+    { path: '/', label: 'HOME' },
+    { path: '/doctors', label: 'ALL DOCTORS' },
+    { path: '/about', label: 'ABOUT' },
+    { path: '/contact', label: 'CONTACT' }
+  ]
+
   return (
-    <div className='flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400 dark:border-b-gray-700 dark:text-white'>
-      <img onClick={() => navigate('/')} className='w-44 cursor-pointer' src={assets.logo} alt="Logo" />
-      <ul className='md:flex items-start gap-5 font-medium hidden'>
-        <NavLink to='/'>
-          <li className='py-1'>HOME</li>
-          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-        </NavLink>
-        <NavLink to='/doctors'>
-          <li className='py-1'>ALL DOCTORS</li>
-          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-        </NavLink>
-        <NavLink to='/about'>
-          <li className='py-1'>ABOUT</li>
-          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-        </NavLink>
-        <NavLink to='/contact'>
-          <li className='py-1'>CONTACT</li>
-          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-        </NavLink>
-      </ul>
+    <motion.nav 
+      className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800"
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <motion.div 
+            className="flex-shrink-0 cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate('/')}
+          >
+            <img 
+              className="h-10 w-auto" 
+              src={isDark ? assets.logo_dark : assets.logo} 
+              alt="Logo" 
+            />
+          </motion.div>
 
-      <div className='flex items-center gap-4'>
-        {
-          token && userData ? (
-            <div className='flex items-center gap-2 cursor-pointer group relative'>
-              <img className='w-8 rounded-full' src={userData.image} alt="User" />
-              <img className='w-2.5' src={assets.dropdown_icon} alt="Dropdown" />
-              <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 dark:text-gray-300 z-20 hidden group-hover:block'>
-                <div className='min-w-48 bg-gray-50 dark:bg-gray-800 rounded flex flex-col gap-4 p-4'>
-                  <p onClick={() => navigate('/my-profile')} className='hover:text-black dark:hover:text-white cursor-pointer'>My Profile</p>
-                  <p onClick={() => navigate('/my-appointments')} className='hover:text-black dark:hover:text-white cursor-pointer'>My Appointments</p>
-                  <p onClick={logout} className='hover:text-black dark:hover:text-white cursor-pointer'>Logout</p>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <button onClick={() => navigate('/login')} className='bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block'>Create account</button>
-          )
-        }
-
-        <DarkModeToggle />
-
-        <img onClick={() => setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="Menu" />
-
-        <div className={`md:hidden right-0 top-0 bottom-0 z-20 overflow-hidden bg-white dark:bg-black text-black dark:text-white transition-all ${showMenu ? 'fixed w-full' : 'h-0 w-0'}`}>
-          <div className='flex items-center justify-between px-5 py-6'>
-            <img src={assets.logo} className='w-36' alt="Logo" />
-            <img onClick={() => setShowMenu(false)} src={assets.cross_icon} className='w-7' alt="Close" />
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <NavLink 
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) => 
+                  `relative px-1 py-2 text-sm font-medium transition-colors ${
+                    isActive 
+                      ? 'text-primary dark:text-primary-light' 
+                      : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {link.label}
+                    {isActive && (
+                      <motion.div 
+                        className="absolute bottom-0 left-0 h-0.5 bg-primary dark:bg-primary-light w-full"
+                        layoutId="navUnderline"
+                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </>
+                )}
+              </NavLink>
+            ))}
           </div>
-          <ul className='flex flex-col items-center gap-2 mt-5 px-5 text-lg font-medium'>
-            <NavLink onClick={() => setShowMenu(false)} to='/'><p className='px-4 py-2 rounded full inline-block'>HOME</p></NavLink>
-            <NavLink onClick={() => setShowMenu(false)} to='/doctors'><p className='px-4 py-2 rounded full inline-block'>ALL DOCTORS</p></NavLink>
-            <NavLink onClick={() => setShowMenu(false)} to='/about'><p className='px-4 py-2 rounded full inline-block'>ABOUT</p></NavLink>
-            <NavLink onClick={() => setShowMenu(false)} to='/contact'><p className='px-4 py-2 rounded full inline-block'>CONTACT</p></NavLink>
-          </ul>
-          <div className="flex justify-center mt-5 mb-5">
+
+          {/* Right side controls */}
+          <div className="flex items-center gap-4">
+            {token && userData ? (
+              <div className="relative">
+                <motion.button
+                  className="flex items-center gap-2 group"
+                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <img 
+                    className="w-8 h-8 rounded-full object-cover border-2 border-white dark:border-gray-800 shadow-sm"
+                    src={userData.image} 
+                    alt="User" 
+                  />
+                  <motion.div
+                    animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <ChevronDown size={16} className="text-gray-600 dark:text-gray-300" />
+                  </motion.div>
+                </motion.button>
+
+                <AnimatePresence>
+                  {isDropdownOpen && (
+                    <motion.div
+                      className="absolute right-0 mt-2 w-48 origin-top-right bg-white dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="py-1">
+                        <motion.button
+                          onClick={() => {
+                            navigate('/my-profile')
+                            setIsDropdownOpen(false)
+                          }}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                          whileHover={{ x: 4 }}
+                        >
+                          My Profile
+                        </motion.button>
+                        <motion.button
+                          onClick={() => {
+                            navigate('/my-appointments')
+                            setIsDropdownOpen(false)
+                          }}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                          whileHover={{ x: 4 }}
+                        >
+                          My Appointments
+                        </motion.button>
+                        <motion.button
+                          onClick={logout}
+                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+                          whileHover={{ x: 4 }}
+                        >
+                          Logout
+                        </motion.button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <motion.button
+                onClick={() => navigate('/login')}
+                className="hidden md:block px-6 py-2 rounded-full bg-gradient-to-r from-primary to-primary-dark text-white font-medium shadow-sm hover:shadow-md transition-all"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Create account
+              </motion.button>
+            )}
+
             <DarkModeToggle />
+
+            {/* Mobile menu button */}
+            <motion.button
+              className="md:hidden p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none"
+              onClick={() => setShowMenu(true)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Menu size={24} />
+            </motion.button>
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {showMenu && (
+          <motion.div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowMenu(false)}
+          >
+            <motion.div
+              className="absolute right-0 top-0 h-full w-80 bg-white dark:bg-gray-900 shadow-xl"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between px-6 py-5 border-b border-gray-200 dark:border-gray-800">
+                <img 
+                  className="h-8 w-auto" 
+                  src={isDark ? assets.logo_dark : assets.logo} 
+                  alt="Logo" 
+                />
+                <motion.button
+                  className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                  onClick={() => setShowMenu(false)}
+                  whileHover={{ rotate: 90 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <X size={24} />
+                </motion.button>
+              </div>
+
+              <div className="px-6 py-4">
+                <div className="flex flex-col space-y-4">
+                  {navLinks.map((link) => (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `px-3 py-3 rounded-lg text-base font-medium transition-colors ${
+                          isActive
+                            ? 'bg-primary/10 text-primary dark:text-primary-light'
+                            : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+                        }`
+                      }
+                      onClick={() => setShowMenu(false)}
+                    >
+                      {link.label}
+                    </NavLink>
+                  ))}
+                </div>
+
+                {!token && (
+                  <motion.button
+                    onClick={() => {
+                      navigate('/login')
+                      setShowMenu(false)
+                    }}
+                    className="w-full mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-primary to-primary-dark text-white font-medium shadow-sm"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Create account
+                  </motion.button>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   )
 }
 

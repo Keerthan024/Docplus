@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { assets } from '../assets/assets';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { CheckCircle, ArrowRight, ChevronRight } from 'lucide-react';
+import { assets } from '../assets/assets.js';
 
 const Header = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.1 });
   const [currentSpecialty, setCurrentSpecialty] = useState(0);
-  const specialties = ['Cardiologist', 'Dermatologist', 'Pediatrician', 'Neurologist'];
+  const specialties = ['Cardiologists', 'Dermatologists', 'Pediatricians', 'Neurologists'];
+  const stats = [
+    { value: '500+', label: 'Patients Daily' },
+    { value: '98%', label: 'Satisfaction Rate' },
+    { value: '24/7', label: 'Availability' }
+  ];
 
   useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    }
+    if (inView) controls.start('visible');
   }, [controls, inView]);
 
   useEffect(() => {
@@ -22,230 +26,176 @@ const Header = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const containerVariants = {
+  const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.1,
         delayChildren: 0.3
       }
     }
   };
 
-  const itemVariants = {
+  const item = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         ease: [0.1, 0.25, 0.3, 1],
-        duration: 0.8
+        duration: 0.6
       }
     }
   };
 
-  const imageVariants = {
-    hidden: { scale: 0.9, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        delay: 0.5,
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    },
-    hover: {
-      scale: 1.02,
-      transition: { duration: 0.3 }
-    }
-  };
-
-  const specialtyVariants = {
+  const specialty = {
     enter: { y: 20, opacity: 0 },
     center: { y: 0, opacity: 1 },
     exit: { y: -20, opacity: 0 }
   };
 
   return (
-    <motion.div
+    <motion.header
       ref={ref}
       initial="hidden"
       animate={controls}
-      variants={containerVariants}
-      className="relative overflow-hidden bg-gradient-to-br from-[#002d39] via-[#004052] to-[#005066] rounded-2xl px-6 md:px-10 lg:px-20 py-10 md:py-16"
+      variants={container}
+      className="relative overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800"
     >
-      {/* Background decorative elements */}
+      {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#006680] rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-[#00a3cc] rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute left-1/2 top-1/2 w-96 h-96 bg-[#0088aa] rounded-full opacity-5 blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blue-500/5 to-transparent"></div>
+        <div className="absolute -right-20 -top-20 w-64 h-64 bg-blue-500 rounded-full opacity-5 blur-3xl"></div>
+        <div className="absolute -left-20 -bottom-20 w-80 h-80 bg-blue-400 rounded-full opacity-5 blur-3xl"></div>
       </div>
 
-      <div className="relative z-10 flex flex-col md:flex-row items-center">
-        {/* Header Left */}
-        <motion.div
-          variants={containerVariants}
-          className="md:w-1/2 flex flex-col items-start justify-center gap-6 py-10 m-auto md:py-[5vw]"
-        >
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl text-white font-bold leading-tight md:leading-tight lg:leading-tight"
-          >
-            Find & Book Appointment <br />
-            With{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10">Trusted</span>
-              <span className="absolute bottom-1 left-0 w-full h-3 bg-[#00c2ff] opacity-30 z-0"></span>
-            </span>{" "}
-            Doctors
-          </motion.h1>
-
-          <motion.div
-  variants={itemVariants}
-  className="relative h-12 flex items-center"
->
-  <span className="text-white/80 text-lg inline-flex items-baseline">
-    Expert{" "}
-    <AnimatePresence mode="wait">
-      <motion.span
-        key={currentSpecialty}
-        initial="enter"
-        animate="center"
-        exit="exit"
-        variants={specialtyVariants}
-        transition={{ duration: 0.5 }}
-        className="inline-block font-semibold text-[#00c2ff] min-w-[120px] mx-1"
-      >
-        {specialties[currentSpecialty]}
-      </motion.span>
-    </AnimatePresence>
-    available now
-  </span>
-</motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-4 text-white/80 text-base"
-          >
-            <div className="relative">
-              <img
-                className="w-32"
-                src={assets.group_profiles}
-                alt="Trusted patients"
-              />
-              <div className="absolute -bottom-2 -right-2 bg-[#00c2ff] text-white text-xs font-bold px-2 py-1 rounded-full">
-                500+
-              </div>
-            </div>
-            <p className="max-w-xs">
-              Browse our network of trusted specialists and schedule your
-              appointment in just a few clicks.
-            </p>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="flex gap-4">
-            <motion.a
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 5px 15px rgba(0, 194, 255, 0.3)",
-              }}
-              whileTap={{ scale: 0.95 }}
-              href="#speciality"
-              className="flex items-center gap-2 bg-[#00c2ff] px-8 py-3 rounded-full text-white text-sm font-medium hover:bg-[#00a8e0] transition-all duration-300"
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 md:py-28">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Content */}
+          <motion.div variants={container} className="space-y-8">
+            <motion.h1 
+              variants={item}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
-              Book appointment
-              <motion.img
-                animate={{
-                  x: [0, 5, 0],
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 1.5,
-                  ease: "easeInOut",
-                }}
-                className="w-3"
-                src={assets.arrow_icon}
-                alt=""
-              />
-            </motion.a>
+              Find & Connect With{' '}
+              <span className="relative inline-block">
+                <span className="relative z-10">Trusted</span>
+                <span className="absolute bottom-2 left-0 w-full h-3 bg-blue-500/30 z-0"></span>
+              </span>{' '}
+              Healthcare Specialists
+            </motion.h1>
 
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#doctors"
-              className="flex items-center gap-2 bg-transparent border border-white/30 px-6 py-3 rounded-full text-white text-sm font-medium hover:bg-white/10 transition-all duration-300"
-            >
-              Browse Doctors
-            </motion.a>
-          </motion.div>
-        </motion.div>
+            <motion.div variants={item} className="relative h-12">
+              <p className="text-xl text-gray-300 inline-flex items-baseline">
+                Book appointments with{' '}
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentSpecialty}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    variants={specialty}
+                    transition={{ duration: 0.5 }}
+                    className="inline-block font-semibold text-blue-400 min-w-[160px] mx-1"
+                  >
+                    {specialties[currentSpecialty]}
+                  </motion.span>
+                </AnimatePresence>
+              </p>
+            </motion.div>
 
-        {/* Header Right */}
-        <motion.div
-          variants={imageVariants}
-          whileHover="hover"
-          className="md:w-1/2 relative mt-10 md:mt-0"
-        >
-          <img
-            className="w-full h-auto rounded-xl shadow-2xl object-contain"
-            src={assets.header_img}
-            alt="Doctor with patient"
-            style={{ maxHeight: "70vh" }}
-          />
+            <motion.p variants={item} className="text-lg text-gray-300 max-w-lg">
+              Our platform connects you with top-rated medical professionals for seamless appointment booking and quality care.
+            </motion.p>
 
-          {/* Floating badge */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 1, type: "spring" }}
-            className="absolute -top-5 -right-5 bg-white p-3 rounded-xl shadow-lg"
-          >
-            <div className="flex items-center gap-2">
-              <div className="bg-green-100 p-2 rounded-full">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-green-600"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
+            <motion.div variants={item} className="flex flex-wrap gap-4">
+              <motion.a
+                href="/doctors"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-3.5 rounded-full font-medium transition-colors"
+              >
+                Find Your Doctor
+                <motion.div
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <div>
-                <p className="text-xs text-gray-500">Available now</p>
-                <p className="text-sm font-semibold">Dr. Sarah Johnson</p>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
+                  <ArrowRight size={18} />
+                </motion.div>
+              </motion.a>
 
-      {/* Floating stats */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-6 left-6 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20"
-      >
-        <div className="flex items-center gap-4">
-          <div className="text-center">
-            <p className="text-2xl font-bold text-white">500+</p>
-            <p className="text-xs text-white/70">Patients Daily</p>
-          </div>
-          <div className="h-8 w-px bg-white/20"></div>
-          <div className="text-center">
-            <p className="text-2xl font-bold text-white">98%</p>
-            <p className="text-xs text-white/70">Satisfaction</p>
-          </div>
+              <motion.a
+                href="/doctors"
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 bg-transparent border border-gray-600 hover:border-gray-500 text-white px-6 py-3.5 rounded-full font-medium transition-colors"
+              >
+                Browse Specialties
+                <ChevronRight size={18} />
+              </motion.a>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div 
+              variants={item}
+              className="flex flex-wrap gap-6 mt-10"
+            >
+              {stats.map((stat, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + i * 0.1 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div>
+                    <p className="text-2xl font-bold text-white">{stat.value}</p>
+                    <p className="text-sm text-gray-400">{stat.label}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="relative"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={assets.header_img}
+                alt="Doctor consulting with patient"
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent"></div>
+            </div>
+
+            {/* Doctor badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg"
+            >
+              <div className="flex items-center gap-3">
+                <div className="bg-green-100 p-2 rounded-full">
+                  <CheckCircle className="text-green-600" size={20} />
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500">Available now</p>
+                  <p className="text-sm text-black font-semibold">Dr. Sarah Johnson</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </motion.header>
   );
 };
 

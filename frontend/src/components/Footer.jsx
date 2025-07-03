@@ -1,48 +1,208 @@
-import React from "react";
+import React, { useRef } from "react";
 import { assets } from "../assets/assets";
+import { motion, useInView } from "framer-motion";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
+
+  const socialLinks = [
+    { icon: <FaFacebook className="text-xl" />, name: "Facebook" },
+    { icon: <FaTwitter className="text-xl" />, name: "Twitter" },
+    { icon: <FaInstagram className="text-xl" />, name: "Instagram" },
+    { icon: <FaLinkedin className="text-xl" />, name: "LinkedIn" }
+  ];
+
+  const companyLinks = [
+    { name: "Home", path: "/" },
+    { name: "About us", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Privacy policy", path: "/privacy" }
+  ];
+
+  const contactInfo = [
+    { type: "phone", value: "+91 96415582" },
+    { type: "email", value: "keerthancontact@gmail.com" },
+    { type: "address", value: "K R Nagara, Mysore" }
+  ];
+
   return (
-    <div className="relative bg-gray-100 dark:bg-[#121212] text-black dark:text-white">
-      <div className="relative z-10 px-6 md:px-16 pt-20 pb-5 text-sm">
-        <div className="flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14">
-          <div>
-            <img className="mb-5 w-40" src={assets.logo} alt="Doc+ Logo" />
-            <p className="leading-6 text-gray-700 dark:text-white">
-              Doc+ is a modern, user-friendly platform that simplifies the
-              process of booking and managing doctor appointments. It serves as
-              a bridge between patients and healthcare providers, offering an
-              intuitive interface for seamless scheduling, real-time updates,
-              and secure payments.
-            </p>
-          </div>
-
-          <div>
-            <p className="text-xl font-semibold mb-5">COMPANY</p>
-            <ul className="flex flex-col gap-2 text-gray-700 dark:text-white">
-              <li className="hover:text-primary transition">Home</li>
-              <li className="hover:text-primary transition">About us</li>
-              <li className="hover:text-primary transition">Delivery</li>
-              <li className="hover:text-primary transition">Privacy policy</li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xl font-semibold mb-5">GET IN TOUCH</p>
-            <ul className="flex flex-col gap-2 text-gray-700 dark:text-white">
-              <li className="hover:text-primary transition">91+96415582</li>
-              <li className="hover:text-primary transition">shadowdev@gmail.com</li>
-            </ul>
-          </div>
-        </div>
-
-        <hr className="border-gray-300 dark:border-gray-700 my-10" />
-
-        <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-          © 2024 Doc+.com - All Rights Reserved.
-        </p>
+    <footer 
+      ref={ref}
+      className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-gray-100 dark:from-[#0a0a0a] dark:to-[#121212] text-gray-800 dark:text-gray-200"
+    >
+      {/* Decorative elements */}
+      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-blob animation-delay-4000"></div>
+        <div className="absolute bottom-0 left-1/2 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 dark:opacity-10 animate-blob"></div>
       </div>
-    </div>
+
+      <div className="relative z-10 px-6 py-16 md:px-16 lg:px-24 xl:px-32 max-w-7xl mx-auto">
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
+        >
+          {/* Logo and description */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="w-40"
+            >
+              <img src={assets.logo} alt="Doc+ Logo" className="w-full" />
+            </motion.div>
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+              Doc+ revolutionizes healthcare access with seamless appointment booking, 
+              real-time updates, and secure telemedicine solutions—connecting patients 
+              with top specialists effortlessly.
+            </p>
+            
+            <div className="flex space-x-4">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  href="#"
+                  aria-label={social.name}
+                  className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Company Links */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <motion.h3 
+              className="text-xl font-semibold text-gray-900 dark:text-white"
+              whileHover={{ x: 5 }}
+            >
+              Company
+            </motion.h3>
+            <ul className="space-y-3">
+              {companyLinks.map((link, index) => (
+                <motion.li
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ x: 5 }}
+                  className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors duration-300"
+                >
+                  <a href={link.path}>{link.name}</a>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Contact Info */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <motion.h3 
+              className="text-xl font-semibold text-gray-900 dark:text-white"
+              whileHover={{ x: 5 }}
+            >
+              Contact
+            </motion.h3>
+            <ul className="space-y-3">
+              {contactInfo.map((info, index) => (
+                <motion.li
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ x: 5 }}
+                  className="flex items-start space-x-3 text-gray-600 dark:text-gray-300"
+                >
+                  <span className="mt-1 w-4 h-4 rounded-full bg-primary opacity-80"></span>
+                  <span>{info.value}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Newsletter */}
+          <motion.div variants={itemVariants} className="space-y-6">
+            <motion.h3 
+              className="text-xl font-semibold text-gray-900 dark:text-white"
+              whileHover={{ x: 5 }}
+            >
+              Newsletter
+            </motion.h3>
+            <p className="text-gray-600 dark:text-gray-300">
+              Subscribe to get health tips and special offers
+            </p>
+            <motion.form 
+              className="flex flex-col space-y-4"
+              whileInView={{ opacity: 1 }}
+            >
+              <motion.input
+                type="email"
+                placeholder="Your email"
+                className="px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                whileFocus={{ scale: 1.02 }}
+              />
+              <motion.button
+                type="submit"
+                className="px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-opacity-90 transition-all"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                Subscribe
+              </motion.button>
+            </motion.form>
+          </motion.div>
+        </motion.div>
+
+        {/* Divider */}
+        <motion.hr 
+          className="border-gray-200 dark:border-gray-800 my-12"
+          initial={{ scaleX: 0 }}
+          animate={isInView ? { scaleX: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        />
+
+        {/* Copyright */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.8 }}
+          className="flex flex-col md:flex-row justify-between items-center text-center text-gray-500 dark:text-gray-400 text-sm"
+        >
+          <p>© {new Date().getFullYear()} Doc+. All rights reserved.</p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" className="hover:text-primary transition">Terms of Service</a>
+            <a href="#" className="hover:text-primary transition">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition">Cookies</a>
+          </div>
+        </motion.div>
+      </div>
+    </footer>
   );
 };
 
