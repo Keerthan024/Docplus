@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { assets } from '../assets/assets'
+import { assets } from '../assets/assets.js'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { Sun, Moon, ChevronDown, X, Menu } from 'lucide-react'

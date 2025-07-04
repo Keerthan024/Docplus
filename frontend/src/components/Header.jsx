@@ -188,7 +188,7 @@ const Header = () => {
                 </div>
                 <div>
                   <p className="text-xs text-gray-500">Available now</p>
-                  <p className="text-sm text-black font-semibold">Dr. Sarah Johnson</p>
+                  <p className="text-sm text-black font-semibold">Dr. Keerthan</p>
                 </div>
               </div>
             </motion.div>

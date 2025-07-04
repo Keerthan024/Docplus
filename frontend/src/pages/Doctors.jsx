@@ -33,7 +33,7 @@ const Doctors = () => {
   ];
 
   const getRandomRating = () => {
-    return (Math.random() * 2 + 3).toFixed(1); // Random rating between 3.0 and 5.0
+    return (Math.random() * 2 + 3).toFixed(1);
   };
 
   const applyFilter = () => {
@@ -53,7 +53,7 @@ const Doctors = () => {
     }
 
     setFilterDoc(filtered);
-    setCurrentPage(1); // Reset to first page when filters change
+    setCurrentPage(1); // Reset
   };
 
   useEffect(() => {
@@ -278,7 +278,7 @@ const Doctors = () => {
                     onClick={() => navigate(`/appointment/${doctor._id}`)}
                     className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden cursor-pointer transition-all hover:shadow-md"
                   >
-                    <div className="relative h-48 w-full overflow-hidden">
+                    <div className="relative h-53 w-full overflow-hidden">
                       <motion.img
                         src={doctor.image}
                         alt={doctor.name}
