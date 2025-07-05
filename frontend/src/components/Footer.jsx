@@ -76,7 +76,7 @@ const Footer = () => {
               whileHover={{ scale: 1.05 }}
               className="w-40"
             >
-              <img src={assets.logo} alt="Doc+ Logo" className="w-full" />
+              <img src={assets.logo} alt="Doc+ Logo" className="w-full bg-slate-100" />
             </motion.div>
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               Doc+ revolutionizes healthcare access with seamless appointment booking, 
