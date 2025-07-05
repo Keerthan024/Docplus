@@ -1,35 +1,35 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { AppContext } from '../context/AppContext';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Lock, Mail, User, ArrowRight, Loader2 } from 'lucide-react';
+import React, { useContext, useState, useEffect } from "react";
+import { AppContext } from "../context/AppContext";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Lock, Mail, User, ArrowRight, Loader2 } from "lucide-react";
 
 const Login = () => {
   const { backendUrl, token, setToken } = useContext(AppContext);
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [formVariant, setFormVariant] = useState('login');
+  const [formVariant, setFormVariant] = useState("login");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
 
     try {
-      const endpoint = isLogin ? '/api/user/login' : '/api/user/register';
+      const endpoint = isLogin ? "/api/user/login" : "/api/user/register";
       const payload = isLogin ? { email, password } : { name, email, password };
 
       const { data } = await axios.post(backendUrl + endpoint, payload);
 
       if (data.success) {
-        localStorage.setItem('token', data.token);
+        localStorage.setItem("token", data.token);
         setToken(data.token);
-        toast.success(`Welcome ${isLogin ? 'back' : ''}!`);
+        toast.success(`Welcome ${isLogin ? "back" : ""}!`);
       } else {
         toast.error(data.message);
       }
@@ -42,18 +42,18 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate('/');
+      navigate("/");
     }
   }, [token, navigate]);
 
   const toggleForm = () => {
-    setFormVariant(isLogin ? 'signup' : 'login');
+    setFormVariant(isLogin ? "signup" : "login");
     setIsLogin(!isLogin);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
-      <motion.div 
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-4">
+      <motion.div
         className="w-full max-w-md"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -61,17 +61,17 @@ const Login = () => {
       >
         {/* Form Container */}
         <motion.div
-          className="bg-white rounded-2xl shadow-xl overflow-hidden"
+          className="bg-white dark:bg-gray-700 rounded-2xl shadow-xl overflow-hidden"
           layout
         >
           {/* Form Header */}
-          <motion.div 
+          <motion.div
             className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <motion.h2 
+            <motion.h2
               className="text-2xl font-bold text-white"
               key={formVariant}
               initial={{ y: -10, opacity: 0 }}
@@ -79,10 +79,10 @@ const Login = () => {
               exit={{ y: 10, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              {isLogin ? 'Welcome Back' : 'Create Account'}
+              {isLogin ? "Welcome Back" : "Create Account"}
             </motion.h2>
             <p className="text-blue-100 mt-2">
-              {isLogin ? 'Sign in to continue' : 'Join us to get started'}
+              {isLogin ? "Sign in to continue" : "Join us to get started"}
             </p>
           </motion.div>
 
@@ -101,10 +101,10 @@ const Login = () => {
                   <motion.div
                     className="mb-4"
                     initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
+                    animate={{ opacity: 1, height: "auto" }}
                     transition={{ duration: 0.3 }}
                   >
-                    <label className="block text-gray-700 text-sm font-medium mb-1">
+                    <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">
                       Full Name
                     </label>
                     <div className="relative">
@@ -115,7 +115,7 @@ const Login = () => {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 dark:text-white"
                         placeholder="John Doe"
                         required
                       />
@@ -124,7 +124,7 @@ const Login = () => {
                 )}
 
                 <div className="mb-4">
-                  <label className="block text-gray-700 text-sm font-medium mb-1">
+                  <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">
                     Email Address
                   </label>
                   <div className="relative">
@@ -135,7 +135,7 @@ const Login = () => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 dark:text-white"
                       placeholder="your@email.com"
                       required
                     />
@@ -143,7 +143,7 @@ const Login = () => {
                 </div>
 
                 <div className="mb-6">
-                  <label className="block text-gray-700 text-sm font-medium mb-1">
+                  <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">
                     Password
                   </label>
                   <div className="relative">
@@ -154,7 +154,7 @@ const Login = () => {
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-800 dark:text-white"
                       placeholder="••••••••"
                       required
                       minLength={6}
@@ -166,8 +166,8 @@ const Login = () => {
                   type="submit"
                   className={`w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                     isLoading
-                      ? 'bg-blue-400'
-                      : 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700'
+                      ? "bg-blue-400"
+                      : "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                   }`}
                   whileHover={!isLoading ? { scale: 1.02 } : {}}
                   whileTap={!isLoading ? { scale: 0.98 } : {}}
@@ -180,7 +180,7 @@ const Login = () => {
                     </>
                   ) : (
                     <>
-                      {isLogin ? 'Sign In' : 'Create Account'}
+                      {isLogin ? "Sign In" : "Create Account"}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </>
                   )}
@@ -192,7 +192,7 @@ const Login = () => {
               <motion.button
                 type="button"
                 onClick={toggleForm}
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -205,8 +205,8 @@ const Login = () => {
         </motion.div>
 
         {/* Footer */}
-        <motion.p 
-          className="mt-6 text-center text-sm text-gray-500"
+        <motion.p
+          className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
