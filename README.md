@@ -26,7 +26,7 @@ Try out the live demo of Doc+:
 |------------|------------------------------------------------|---------------------------------------------------|
 | **Patient**| [Patient Portal](https://docplus-user.vercel.app/)   | 📧 `patient@docplus.com` <br> 🔑 `patient123`     |
 | **Doctor** | [Doctor Dashboard](https://docplus-admin.vercel.app/) | 📧 `doctor@docplus.com` <br> 🔑 `doctor123`       |
-| **Admin**  | [Admin Panel](https://docplus-admin.vercel.app/) | 📧 `admin@docplus.com` <br> 🔑 `keerthan123`      |
+| **Admin**  | [Admin Panel](https://docplus-admin.vercel.app/) | 📧 `admin@gmail.com` <br> 🔑 `docplus123`      |
 
 > ⚠️ **Note**: This is a demo environment. Please avoid entering real personal information.
 
@@ -71,8 +71,8 @@ MONGODB_URI ='MongoDB URI here'
 CLOUDINARY_NAME = 'Cloudinary Name here'
 CLOUDINARY_API_KEY ='Cloudinary API key here'
 CLOUDINARY_SECRET_KEY =' Cloudinary Secret key here'
-ADMIN_EMAIL = 'admin@doctalk.com'
-ADMIN_PASSWORD = 'keerthan123'
+ADMIN_EMAIL = 'admin@gmail.com'
+ADMIN_PASSWORD = 'docplus123'
 JWT_SECRET = "doctalk"
 RAZORPAY_KEY_ID = 'Razorpay Key Id here'
 RAZORPAY_KEY_SECRET = 'Razorpay Key Secret here'
