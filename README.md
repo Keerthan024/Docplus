@@ -1,59 +1,82 @@
-# 🚑 Doc+
+# 🚑 Doc+ - Doctor Appointment System
 
-## 📝 Project Overview
+![Project Banner](https://via.placeholder.com/1200x400?text=Doc+Appointment+System) <!-- Replace with actual image -->
 
-**Doc+** is a modern, user-friendly platform that simplifies the process of booking and managing doctor appointments. It bridges the gap between patients and healthcare providers with a smooth interface for scheduling, real-time updates, and secure payments. Designed for accessibility and efficiency, Doc+ improves patient experience and streamlines doctor appointment management.
+## 📝 Table of Contents
+- [Project Overview](#-project-overview)
+- [Features](#-features)
+- [Live Demo](#-live-demo)
+- [Technology Stack](#-technology-stack)
+- [Installation](#-installation)
+  - [Prerequisites](#-prerequisites)
+  - [Setup Instructions](#-setup-instructions)
+  - [Environment Variables](#-environment-variables)
+- [How It Works](#-how-it-works)
+- [API Documentation](#-api-documentation)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Author](#-author)
 
-## 🎯 Main Goal
+## 🌟 Project Overview
+Doc+ is a modern healthcare platform connecting patients with doctors through an intuitive appointment system. It simplifies medical scheduling with real-time availability, secure payments, and automated reminders.
 
-The primary goal of **Doc+** is to create a streamlined, secure, and efficient healthcare ecosystem. It enables patients to connect with doctors effortlessly while giving healthcare providers a robust platform to manage their schedules. Doc+ focuses on reducing waiting times, enhancing patient satisfaction, and ensuring smooth operations in the medical field.
+## ✨ Features
+### For Patients
+- 🗓️ Easy appointment booking
+- 🔍 Doctor search by specialization
+- 💳 Secure online payments
+- 🔔 SMS/Email reminders
 
-## ✨ Key Features
+### For Doctors
+- 📅 Schedule management
+- 👥 Patient records
+- 💰 Payment tracking
+- 📊 Analytics dashboard
 
-- 🧭 **User-Friendly Interface** – Easy navigation for booking, rescheduling, and canceling appointments
-- 🔍 **Specialization Filters** – Find doctors based on area of expertise
-- 🕒 **Real-Time Availability** – Instantly confirm available appointment slots
-- 💳 **Secure Online Payments** – Integrated with Razorpay for secure transactions
-- 🔐 **Data Security** – Bcrypt used for password encryption
-- 🔔 **Notifications & Reminders** – Email/SMS alerts for appointment status and reminders
-- ☁️ **Scalable & Cloud-Enabled** – Cloudinary for media uploads and storage
+### For Admins
+- 👤 User management
+- 📝 Content moderation
+- 💸 Transaction logs
+- 🛠 System configuration
 
 ## 🌐 Live Demo
+Access our live demo environment:
 
-Try out the live demo of Doc+:
+| Role       | URL                                      | Test Credentials                  |
+|------------|------------------------------------------|-----------------------------------|
+| Patient    | [Patient Portal](https://...)            | Email: patient@demo.com<br>Pass: demo123 |
+| Doctor     | [Doctor Dashboard](https://.../doctor)   | Email: doctor@demo.com<br>Pass: demo123 |
+| Admin      | [Admin Panel](https://.../admin)         | Email: admin@demo.com<br>Pass: admin123 |
 
-| Role       | Live Demo Link                                 | Credentials                                        |
-|------------|------------------------------------------------|---------------------------------------------------|
-| **Patient**| [Patient Portal](https://docplus.vercel.app)   | 📧 `patient@docplus.com` <br> 🔑 `patient123`     |
-| **Doctor** | [Doctor Dashboard](https://docplus.vercel.app/doctor) | 📧 `doctor@docplus.com` <br> 🔑 `doctor123`       |
-| **Admin**  | [Admin Panel](https://docplus.vercel.app/admin) | 📧 `admin@docplus.com` <br> 🔑 `keerthan123`      |
+## 💻 Technology Stack
+**Frontend:**
+- React.js
+- Tailwind CSS
+- Redux Toolkit
 
-> ⚠️ **Note**: This is a demo environment. Please avoid entering real personal information.
+**Backend:**
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- JWT Authentication
 
-## 🛠 Technology Stack
+**Services:**
+- Cloudinary (Media storage)
+- Razorpay (Payments)
+- Twilio (SMS notifications)
 
-| Layer        | Technology             |
-|--------------|------------------------|
-| **Frontend** | React.js               |
-| **Backend**  | Node.js (JavaScript)   |
-| **Database** | MongoDB                |
-| **Cloud**    | Cloudinary             |
-| **Auth**     | Bcrypt                 |
-| **Payments** | Razorpay               |
+## 🛠 Installation
 
-## 🚀 Getting Started
-
-### ✅ Prerequisites
-
-- Node.js (v14 or above)
-- npm or yarn
-- MongoDB (local or MongoDB Atlas)
+### 📋 Prerequisites
+- Node.js v16+
+- MongoDB Atlas account
 - Cloudinary account
-- Razorpay account (for payment gateway)
+- Razorpay test credentials
 
-### ⚙️ Installation Steps
+### ⚙️ Setup Instructions
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/Docplus.git
-cd Docplus
+git clone https://github.com/yourusername/docplus.git
+cd docplus
