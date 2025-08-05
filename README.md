@@ -68,3 +68,18 @@ Try out the live demo of Doc+:
 1. **Clone the repository**
 ```bash
 git clone https://github.com/yourusername/Docplus.git
+cd DocTalk
+npm install
+
+MONGODB_URI='your-mongodb-uri'
+CLOUDINARY_NAME='your-cloudinary-name'
+CLOUDINARY_API_KEY='your-cloudinary-api-key'
+CLOUDINARY_SECRET_KEY='your-cloudinary-secret'
+ADMIN_EMAIL='admin@doctalk.com'
+ADMIN_PASSWORD='keerthan123'
+JWT_SECRET='doctalk'
+RAZORPAY_KEY_ID='your-razorpay-key-id'
+RAZORPAY_KEY_SECRET='your-razorpay-key-secret'
+CURRENCY='INR'
+VITE_BACKEND_URL='http://localhost:4000'
+
