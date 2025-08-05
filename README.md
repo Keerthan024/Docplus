@@ -82,4 +82,71 @@ RAZORPAY_KEY_ID='your-razorpay-key-id'
 RAZORPAY_KEY_SECRET='your-razorpay-key-secret'
 CURRENCY='INR'
 VITE_BACKEND_URL='http://localhost:4000'
+npm run dev
 
+👥 Application Features
+🧑‍⚕️ Patient Portal
+Register/Login securely
+
+Search doctors by specialization
+
+Book, reschedule, or cancel appointments
+
+View appointment history and doctor profiles
+
+🩺 Doctor Dashboard
+Register/Login as doctor
+
+Set available time slots
+
+View and manage appointments
+
+Access and update patient interaction records
+
+🛡 Admin Panel
+Login as admin
+
+Monitor platform activities
+
+Manage user accounts (patients and doctors)
+
+Handle disputes and payment logs
+
+logs
+
+🔄 How It Works
+User Registration
+
+Secure signup for both doctors and patients using Bcrypt.
+
+Search & Book
+
+Patients filter doctors by specialization and location.
+
+Schedule Management
+
+Doctors set their availability, and patients can choose slots accordingly.
+
+Secure Payment
+
+Patients make payments through Razorpay during booking.
+
+Media Management
+
+Profile pictures and medical documents are stored via Cloudinary.
+
+Database Storage
+
+MongoDB is used to store users, appointments, messages, and reviews.
+
+🔐 Security Measures
+✅ Password Encryption – All passwords are hashed using Bcrypt.
+
+🔒 Data Privacy – Sensitive data is securely stored and transmitted.
+
+💳 Secure Payments – Razorpay ensures compliance with payment protocols.
+
+☁️ Cloud Media Security – Cloudinary provides secure access to uploaded content.
+
+👨‍💻 Author
+Made with ❤️ by Keerthan A
