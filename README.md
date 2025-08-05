@@ -80,3 +80,61 @@ Access our live demo environment:
 ```bash
 git clone https://github.com/yourusername/docplus.git
 cd docplus
+
+npm install
+cd client
+npm install
+cd ..
+
+# Server Configuration
+PORT=4000
+NODE_ENV=development
+
+# Database
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/docplus
+
+# Authentication
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRE=30d
+
+# Cloudinary
+CLOUDINARY_NAME=your_name
+CLOUDINARY_KEY=your_key
+CLOUDINARY_SECRET=your_secret
+
+# Razorpay
+RAZORPAY_KEY_ID=your_key_id
+RAZORPAY_SECRET=your_secret_key
+
+# Email Service
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=your_email
+SMTP_PASS=your_password
+
+# Start backend server
+npm run server
+
+# In separate terminal, start frontend
+cd client
+npm start
+
+graph TD
+    A[Patient] -->|Books Appointment| B(Frontend)
+    B -->|API Calls| C[Backend]
+    C -->|Database Operations| D[MongoDB]
+    C -->|External Services| E[Payment Gateway]
+    C -->|External Services| F[Cloud Storage]
+    D -->|Returns Data| C
+    C -->|Sends Response| B
+    B -->|Displays UI| A
+
+graph TD
+    A[Patient] -->|Books Appointment| B(Frontend)
+    B -->|API Calls| C[Backend]
+    C -->|Database Operations| D[MongoDB]
+    C -->|External Services| E[Payment Gateway]
+    C -->|External Services| F[Cloud Storage]
+    D -->|Returns Data| C
+    C -->|Sends Response| B
+    B -->|Displays UI| A
