@@ -25,7 +25,7 @@ Try out the live demo of Doc+:
 | Role       | Live Demo Link                                 | Credentials                                        |
 |------------|------------------------------------------------|---------------------------------------------------|
 | **Patient**| [Patient Portal](https://docplus-user.vercel.app/)   | 📧 `patient@docplus.com` <br> 🔑 `patient123`     |
-| **Doctor** | [Doctor Dashboard](https://docplus-admin.vercel.app/) | 📧 `doctor@docplus.com` <br> 🔑 `doctor123`       |
+| **Doctor** | [Doctor Dashboard](https://docplus-admin.vercel.app/) | 📧 `vijay@gmail.com` <br> 🔑 `123456789`       |
 | **Admin**  | [Admin Panel](https://docplus-admin.vercel.app/) | 📧 `admin@gmail.com` <br> 🔑 `docplus123`      |
 
 > ⚠️ **Note**: This is a demo environment. Please avoid entering real personal information.
