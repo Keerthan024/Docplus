@@ -81,11 +81,7 @@ VITE_BACKEND_URL=http://localhost: 4000
 ```
 
 5. Run the application:
-
- ```bash
    npm run dev
-   ```
-6.The application will be available at http://localhost:4000.
 
 ## Features and Usage
 
