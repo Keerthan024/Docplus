@@ -241,7 +241,7 @@ const Header = () => {
                 </motion.a>
 
                 <motion.a
-                  href="/specialties"
+                  href="/doctors"
                   aria-label="Browse all medical specialties"
                   whileHover={{ y: -3, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

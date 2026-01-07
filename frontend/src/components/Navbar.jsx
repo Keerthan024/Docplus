@@ -100,7 +100,6 @@ const Navbar = () => {
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/doctors', label: 'Find Doctors' },
-    { path: '/specialties', label: 'Specialties' },
     { path: '/about', label: 'About' },
     { path: '/contact', label: 'Contact' }
   ]

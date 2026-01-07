@@ -103,7 +103,7 @@ const TopDoctors = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ const TopDoctors = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap gap-3 justify-center mb-12"
+          className="flex flex-wrap gap-3 justify-center mb-7"
         >
           <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 text-sm">
             <Filter size={16} />
@@ -177,7 +177,7 @@ const TopDoctors = () => {
 
         {/* Carousel Container */}
         <div
-          className="relative overflow-hidden py-8 mb-12"
+          className="relative overflow-hidden py-8 mb-7"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -326,7 +326,7 @@ const TopDoctors = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-8 mb-12"
+          className="flex flex-wrap justify-center gap-8 mb-10"
         >
           <div className="flex items-center gap-3">
             <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">

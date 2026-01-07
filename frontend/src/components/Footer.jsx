@@ -339,42 +339,9 @@ const Footer = () => {
             </motion.div>
           </motion.div>
 
-          {/* App Download CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.6 }}
-            className="mb-16"
-          >
-            <div className="bg-gradient-to-r from-blue-600/10 to-cyan-500/10 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-8 text-center border border-blue-200/50 dark:border-blue-800/30">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
-                Get the DocPlus App
-              </h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">
-                Book appointments, manage prescriptions, and access telemedicine on the go.
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <motion.button
-                  className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-xl flex items-center gap-3"
-                  whileHover={{ y: -3, scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <span>Google Play</span>
-                </motion.button>
-                <motion.button
-                  className="px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-xl flex items-center gap-3"
-                  whileHover={{ y: -3, scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <span>App Store</span>
-                </motion.button>
-              </div>
-            </div>
-          </motion.div>
-
           {/* Divider */}
           <motion.hr 
-            className="border-slate-200 dark:border-slate-800 mb-8"
+            className="border-slate-200 dark:border-slate-800"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}

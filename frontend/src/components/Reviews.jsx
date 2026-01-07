@@ -358,7 +358,7 @@ const Reviews = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-5"
           >
             Trusted by{' '}
             <span className="relative inline-block">
@@ -389,7 +389,7 @@ const Reviews = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-12"
+          className="grid grid-cols-2 md:grid-cols-3 gap-6"
         >
           <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 text-center border border-slate-100 dark:border-slate-700">
             <div className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
@@ -414,7 +414,7 @@ const Reviews = () => {
 
         {/* Main Carousel */}
         <div 
-          className="relative h-[600px] mb-12"
+          className="relative h-[500px]"
           onMouseEnter={stopAutoPlay}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
@@ -504,7 +504,7 @@ const Reviews = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           <div className="flex items-center gap-4 bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border border-slate-100 dark:border-slate-700">
             <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl">
