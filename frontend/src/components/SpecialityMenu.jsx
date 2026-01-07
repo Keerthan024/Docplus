@@ -109,7 +109,7 @@ const SpecialityMenu = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-2xl mx-auto mb-12"
+            className="max-w-2xl mx-auto mb-10"
           >
             <div className="relative group">
               <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 text-slate-400 group-hover:text-blue-500 transition-colors" size={20} />

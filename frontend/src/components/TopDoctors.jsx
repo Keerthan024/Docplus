@@ -321,42 +321,6 @@ const TopDoctors = () => {
           </div>
         </div>
 
-        {/* Trust Indicators */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-8 mb-10"
-        >
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-lg">
-              <Shield size={20} className="text-green-600 dark:text-green-400" />
-            </div>
-            <div>
-              <div className="font-semibold text-slate-900 dark:text-white">Verified Credentials</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">All doctors verified</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-              <ThumbsUp size={20} className="text-blue-600 dark:text-blue-400" />
-            </div>
-            <div>
-              <div className="font-semibold text-slate-900 dark:text-white">Patient Reviews</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">1000+ testimonials</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-              <Zap size={20} className="text-purple-600 dark:text-purple-400" />
-            </div>
-            <div>
-              <div className="font-semibold text-slate-900 dark:text-white">Quick Appointments</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Same-day slots</div>
-            </div>
-          </div>
-        </motion.div>
-
         {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
