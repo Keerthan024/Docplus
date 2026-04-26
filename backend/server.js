@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import dns from 'dns'
 import 'dotenv/config'
 import connectDB from './config/mongodb.js'
 import connectCloudinary from './config/cloudinary.js'
@@ -12,6 +13,8 @@ const app = express()
 const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
+
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 // middlewares
 
