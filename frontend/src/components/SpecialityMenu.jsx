@@ -117,14 +117,14 @@ const SpecialityMenu = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search specialties, symptoms, or conditions..."
-                className="w-full pl-14 pr-24 py-4 text-lg bg-white rounded-2xl border border-slate-200 shadow-lg shadow-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                placeholder="Search specialties..."
+                className="w-full pl-12 sm:pl-14 pr-4 sm:pr-28 py-3 sm:py-4 text-base sm:text-lg bg-white rounded-2xl border border-slate-200 shadow-lg shadow-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
               <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
-                <span className="text-sm text-slate-500 hidden sm:block">
-                  {filteredSpecialties.length} specialties found
+                <span className="text-[11px] sm:text-sm text-slate-500 hidden sm:block">
+                  {filteredSpecialties.length} found
                 </span>
-                <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
+                <button className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
                   <Search size={16} />
                   <span className="hidden sm:inline">Search</span>
                 </button>
@@ -155,7 +155,7 @@ const SpecialityMenu = () => {
 
         {/* Specialties Grid */}
         <AnimatePresence>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-6 mb-12">
             {displayedSpecialties.map((item, index) => (
               <motion.div
                 key={index}

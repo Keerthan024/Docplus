@@ -162,7 +162,7 @@ const TopDoctors = () => {
             <motion.button
               key={filter.id}
               onClick={() => setSelectedFilter(filter.id)}
-              className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
+              className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                 selectedFilter === filter.id
                   ? "bg-blue-600 text-white shadow-md"
                   : "bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
@@ -192,7 +192,7 @@ const TopDoctors = () => {
             {displayedDoctors.map((doctor, index) => (
               <motion.div
                 key={`${doctor._id}-${index}`}
-                className="flex-shrink-0 w-[300px] sm:w-[340px]"
+                className="flex-shrink-0 w-[260px] sm:w-[300px] md:w-[340px]"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}

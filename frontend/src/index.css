@@ -52,6 +52,23 @@
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+img, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+#root {
+  width: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
 }
 
 /* Custom toast styles */

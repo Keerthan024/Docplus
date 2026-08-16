@@ -48,7 +48,7 @@ const App = () => {
       </AnimatePresence>
 
       {/* App Wrapper */}
-      <div className="relative min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
+      <div className="relative min-h-screen overflow-x-hidden bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
 
         {/* Background blobs */}
         <div className="fixed inset-0 pointer-events-none -z-10">

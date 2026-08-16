@@ -221,14 +221,14 @@ const Header = () => {
                   delay: 0.4,
                   ease: [0.22, 1, 0.36, 1] 
                 }}
-                className="flex flex-col sm:flex-row gap-4 pt-6"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6"
               >
                 <motion.a
                   href="/doctors"
                   aria-label="Find your doctor and book appointment"
                   whileHover={{ y: -3, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold text-lg rounded-2xl shadow-lg shadow-blue-700/25 hover:shadow-blue-600/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                  className="group relative flex w-full sm:w-auto items-center justify-center gap-3 px-6 sm:px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-semibold text-base sm:text-lg rounded-2xl shadow-lg shadow-blue-700/25 hover:shadow-blue-600/40 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
                 >
                   <span>Find Your Doctor</span>
                   <ArrowRight 
@@ -245,7 +245,7 @@ const Header = () => {
                   aria-label="Browse all medical specialties"
                   whileHover={{ y: -3, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-slate-800/50 backdrop-blur-sm border-2 border-slate-600 hover:border-slate-400 text-white font-semibold text-lg rounded-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                  className="group relative flex w-full sm:w-auto items-center justify-center gap-3 px-6 sm:px-8 py-4 bg-slate-800/50 backdrop-blur-sm border-2 border-slate-600 hover:border-slate-400 text-white font-semibold text-base sm:text-lg rounded-2xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
                 >
                   <span>Browse Specialties</span>
                   <ChevronRight 

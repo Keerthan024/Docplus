@@ -45,7 +45,7 @@ const Home = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1 }}
-        className="fixed right-6 bottom-32 z-40 flex flex-col gap-3"
+        className="fixed right-4 bottom-24 sm:right-6 sm:bottom-32 z-40 flex flex-col gap-3"
       >
         {/* Quick Chat */}
         <motion.button

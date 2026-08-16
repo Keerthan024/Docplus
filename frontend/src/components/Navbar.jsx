@@ -122,8 +122,8 @@ const Navbar = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 gap-2">
             {/* Logo */}
             <motion.div 
               className="flex-shrink-0 cursor-pointer"
@@ -169,7 +169,7 @@ const Navbar = () => {
             </div>
 
             {/* Right side controls */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
               {/* Search Button */}
               <motion.button
                 className="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
@@ -284,7 +284,9 @@ const Navbar = () => {
                 </div>
               )}
 
-              <DarkModeToggle />
+              <div className="shrink-0">
+                <DarkModeToggle />
+              </div>
 
               {/* Mobile menu button */}
               <motion.button
@@ -354,7 +356,7 @@ const Navbar = () => {
             onClick={() => setShowMenu(false)}
           >
             <motion.div
-              className="absolute right-0 top-0 h-full w-80 bg-white dark:bg-gray-900 shadow-2xl"
+              className="absolute right-0 top-0 h-full w-[88vw] max-w-sm bg-white dark:bg-gray-900 shadow-2xl"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
