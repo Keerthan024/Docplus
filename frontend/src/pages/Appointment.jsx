@@ -383,40 +383,36 @@ const Appointment = () => {
                       whileHover={{ y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setConsultationType(item.type)}
-                      className={`p-3 sm:p-4 rounded-lg sm:rounded-xl border-2 cursor-pointer transition-all lg:flex lg:flex-col ${
+                      className={`p-3 sm:p-4 rounded-lg sm:rounded-xl border-2 cursor-pointer transition-all ${
                         consultationType === item.type
                           ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
                           : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
                       }`}
                     >
-                      <div className="flex items-center justify-between gap-2 sm:gap-3 lg:gap-0 lg:flex-col lg:items-start">
-                        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-                          <div className={`p-2 rounded-lg flex-shrink-0 ${
-                            consultationType === item.type
-                              ? "bg-blue-500 text-white"
-                              : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400"
-                          }`}>
-                            <item.icon size={16} className="sm:block hidden" />
-                            <item.icon size={14} className="sm:hidden block" />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <div className="font-semibold text-sm sm:text-base text-slate-900 dark:text-white leading-tight">{item.label}</div>
-                            <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-tight truncate">{item.desc}</div>
-                          </div>
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <div className={`p-1.5 rounded-lg flex-shrink-0 ${
+                          consultationType === item.type
+                            ? "bg-blue-500 text-white"
+                            : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400"
+                        }`}>
+                          <item.icon size={14} className="sm:block hidden" />
+                          <item.icon size={12} className="sm:hidden block" />
                         </div>
-                        <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-0 lg:flex-col lg:items-start lg:mt-2 lg:w-full flex-shrink-0">
-                          <div>
-                            <span className="text-base sm:text-xl lg:text-lg font-bold text-slate-900 dark:text-white">
-                              {currencySymbol}{item.price}
-                            </span>
-                          </div>
-                          {item.recommended && (
-                            <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 lg:px-1.5 lg:py-0.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs rounded-full flex-shrink-0 whitespace-nowrap">
-                              Best
-                            </span>
-                          )}
+                        <div className="text-right flex-shrink-0">
+                          <span className="text-sm sm:text-base lg:text-lg font-bold text-slate-900 dark:text-white">
+                            {currencySymbol}{item.price}
+                          </span>
                         </div>
                       </div>
+                      <div className="min-w-0 mb-2">
+                        <div className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white leading-tight">{item.label}</div>
+                        <div className="text-xs text-slate-500 dark:text-slate-400 leading-tight truncate">{item.desc}</div>
+                      </div>
+                      {item.recommended && (
+                        <span className="inline-block px-1.5 py-0.5 sm:px-2 sm:py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs rounded-full whitespace-nowrap">
+                          Best
+                        </span>
+                      )}
                     </motion.div>
                   ))}
                 </div>
