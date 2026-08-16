@@ -606,38 +606,38 @@ const Appointment = () => {
               className="space-y-6"
             >
               {/* Booking Summary Card */}
-              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 sticky top-6">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
+              <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-4 sm:p-6 sticky top-6">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6">
                   Booking Summary
                 </h3>
                 
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-600 dark:text-slate-400">Consultation Fee</span>
-                    <span className="font-semibold text-slate-900 dark:text-white">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex justify-between items-center gap-2 min-w-0">
+                    <span className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Consultation Fee</span>
+                    <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white flex-shrink-0">
                       {currencySymbol}{consultationType === "video" ? docInfo.fees : 
                        consultationType === "phone" ? docInfo.fees - 200 : docInfo.fees + 300}
                     </span>
                   </div>
                   
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-600 dark:text-slate-400">Platform Fee</span>
-                    <span className="font-semibold text-slate-900 dark:text-white">
+                  <div className="flex justify-between items-center gap-2 min-w-0">
+                    <span className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Platform Fee</span>
+                    <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white flex-shrink-0">
                       {currencySymbol}99
                     </span>
                   </div>
                   
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-600 dark:text-slate-400">Tax (18%)</span>
-                    <span className="font-semibold text-slate-900 dark:text-white">
+                  <div className="flex justify-between items-center gap-2 min-w-0">
+                    <span className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">Tax (18%)</span>
+                    <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white flex-shrink-0">
                       {currencySymbol}{(docInfo.fees * 0.18).toFixed(0)}
                     </span>
                   </div>
                   
-                  <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
-                    <div className="flex justify-between items-center">
-                      <span className="text-lg font-bold text-slate-900 dark:text-white">Total</span>
-                      <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                  <div className="pt-3 sm:pt-4 border-t border-slate-200 dark:border-slate-700">
+                    <div className="flex justify-between items-center gap-2 min-w-0">
+                      <span className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Total</span>
+                      <span className="text-lg sm:text-2xl font-bold text-blue-600 dark:text-blue-400 flex-shrink-0">
                         {currencySymbol}
                         {Math.round(
                           (consultationType === "video" ? docInfo.fees : 
