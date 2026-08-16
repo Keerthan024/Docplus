@@ -252,10 +252,10 @@ const Appointment = () => {
                 className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden"
                 whileHover={{ y: -2 }}
               >
-                <div className="p-6 md:p-8">
-                  <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="p-4 sm:p-6 md:p-8">
+                  <div className="flex flex-col md:flex-row gap-4 sm:gap-6 items-start">
                     {/* Doctor Image */}
-                    <div className="relative">
+                    <div className="relative flex-shrink-0">
                       <motion.div
                         whileHover={{ scale: 1.05 }}
                         className="relative overflow-hidden rounded-xl"
@@ -263,7 +263,7 @@ const Appointment = () => {
                         <img
                           src={docInfo.image}
                           alt={docInfo.name}
-                          className="w-40 h-40 object-cover rounded-xl border-4 border-white dark:border-slate-800 shadow-lg"
+                          className="w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 object-cover rounded-xl border-4 border-white dark:border-slate-800 shadow-lg"
                         />
                         <div className="absolute top-2 right-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 py-1 rounded-full text-xs font-bold">
                           VERIFIED
@@ -309,21 +309,21 @@ const Appointment = () => {
 
                         {/* Consultation Fee */}
                         <motion.div
-                          className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 px-5 py-3 rounded-xl border border-blue-100 dark:border-blue-800/30"
+                          className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl border border-blue-100 dark:border-blue-800/30 flex-shrink-0"
                           whileHover={{ scale: 1.02 }}
                         >
                           <div className="text-center">
-                            <div className="text-sm text-slate-600 dark:text-slate-400 mb-1">Consultation Fee</div>
-                            <div className="text-2xl font-bold text-slate-900 dark:text-white">
+                            <div className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-1">Consultation Fee</div>
+                            <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                               {currencySymbol}{docInfo.fees}
                             </div>
-                            <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">30 min session</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 sm:mt-1">30 min session</div>
                           </div>
                         </motion.div>
                       </div>
 
                       {/* Doctor Details */}
-                      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div className="flex items-center gap-3">
                           <div className="p-2 bg-slate-100 dark:bg-slate-700 rounded-lg">
                             <Award size={20} className="text-blue-600 dark:text-blue-400" />
@@ -365,14 +365,14 @@ const Appointment = () => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-6"
+                className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-4 sm:p-6"
               >
-                <h3 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-6">
+                <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6">
                   <FiVideo className="text-blue-500" />
                   Consultation Type
                 </h3>
                 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                   {[
                     { type: "video", icon: Video, label: "Video Consult", desc: "Secure video call", price: docInfo.fees, recommended: true },
                     { type: "phone", icon: Phone, label: "Phone Consult", desc: "Audio call only", price: docInfo.fees - 200 },
@@ -383,36 +383,37 @@ const Appointment = () => {
                       whileHover={{ y: -5, scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setConsultationType(item.type)}
-                      className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                      className={`p-3 sm:p-4 rounded-xl border-2 cursor-pointer transition-all ${
                         consultationType === item.type
                           ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
                           : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600"
                       }`}
                     >
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg ${
+                      <div className="flex flex-col gap-2 sm:gap-3">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <div className={`p-2 rounded-lg flex-shrink-0 ${
                             consultationType === item.type
                               ? "bg-blue-500 text-white"
                               : "bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400"
                           }`}>
-                            <item.icon size={20} />
+                            <item.icon size={16} className="sm:block hidden" />
+                            <item.icon size={14} className="sm:hidden block" />
                           </div>
-                          <div>
-                            <div className="font-semibold text-slate-900 dark:text-white">{item.label}</div>
-                            <div className="text-sm text-slate-500 dark:text-slate-400">{item.desc}</div>
+                          <div className="flex-1 min-w-0">
+                            <div className="font-semibold text-sm sm:text-base text-slate-900 dark:text-white truncate">{item.label}</div>
+                            <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 truncate">{item.desc}</div>
                           </div>
+                          {item.recommended && (
+                            <span className="px-1.5 py-0.5 sm:px-2 sm:py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs rounded-full flex-shrink-0">
+                              Best
+                            </span>
+                          )}
                         </div>
-                        {item.recommended && (
-                          <span className="px-2 py-1 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs rounded-full">
-                            Recommended
+                        <div>
+                          <span className="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white">
+                            {currencySymbol}{item.price}
                           </span>
-                        )}
-                      </div>
-                      <div className="text-right">
-                        <span className="text-2xl font-bold text-slate-900 dark:text-white">
-                          {currencySymbol}{item.price}
-                        </span>
+                        </div>
                       </div>
                     </motion.div>
                   ))}
@@ -424,19 +425,19 @@ const Appointment = () => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-6"
+                className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-4 sm:p-6"
               >
-                <h3 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-6">
+                <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6">
                   <Calendar size={20} className="text-blue-500" />
                   Select Date & Time
                 </h3>
 
                 {/* Date Selection */}
-                <div className="mb-8">
-                  <h4 className="text-lg font-medium text-slate-700 dark:text-slate-300 mb-4">
+                <div className="mb-6 sm:mb-8">
+                  <h4 className="text-base sm:text-lg font-medium text-slate-700 dark:text-slate-300 mb-3 sm:mb-4">
                     Choose a Date
                   </h4>
-                  <div className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide">
+                  <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-3 sm:pb-4 scrollbar-hide">
                     {docSlots.length > 0 && docSlots.map((item, index) => {
                       const date = item[0]?.datetime;
                       if (!date) return null;
@@ -452,16 +453,16 @@ const Appointment = () => {
                             setSlotIndex(index);
                             setSlotTime(""); // Reset time selection when date changes
                           }}
-                          className={`flex flex-col items-center justify-center min-w-[88px] sm:min-w-[100px] p-3 sm:p-4 rounded-xl cursor-pointer transition-all ${
+                          className={`flex flex-col items-center justify-center min-w-[70px] sm:min-w-[85px] md:min-w-[100px] p-2 sm:p-3 rounded-xl cursor-pointer transition-all ${
                             slotIndex === index
                               ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg"
                               : "bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600"
                           }`}
                         >
-                          <span className="text-sm font-medium">
+                          <span className="text-xs sm:text-sm font-medium">
                             {shortDays[date.getDay()]}
                           </span>
-                          <span className="text-xl font-bold my-1">
+                          <span className="text-lg sm:text-xl font-bold my-1">
                             {date.getDate()}
                           </span>
                           <span className="text-xs opacity-80">
@@ -475,12 +476,12 @@ const Appointment = () => {
 
                 {/* Time Slot Selection */}
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <h4 className="text-lg font-medium text-slate-700 dark:text-slate-300">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4 gap-2">
+                    <h4 className="text-base sm:text-lg font-medium text-slate-700 dark:text-slate-300">
                       Available Time Slots
                     </h4>
-                    <div className="text-sm text-slate-500 dark:text-slate-400">
-                      {docSlots[slotIndex]?.length || 0} slots available
+                    <div className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 flex-shrink-0">
+                      {docSlots[slotIndex]?.length || 0} slots
                     </div>
                   </div>
                   
@@ -491,7 +492,7 @@ const Appointment = () => {
                       ))}
                     </div>
                   ) : docSlots[slotIndex]?.length > 0 ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-3">
                       {docSlots[slotIndex].map((item, index) => (
                         <motion.button
                           key={index}
