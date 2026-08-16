@@ -117,7 +117,7 @@ const Login = () => {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-4 overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center overflow-x-hidden bg-gradient-to-br from-blue-50 via-white to-cyan-50 dark:from-slate-950 dark:via-slate-900 dark:to-blue-950 p-4 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div 
@@ -150,7 +150,7 @@ const Login = () => {
       </div>
 
       <motion.div
-        className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8"
+        className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}

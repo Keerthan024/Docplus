@@ -104,7 +104,7 @@ const Contact = () => {
       ref={ref}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-[#0a0a0a] dark:via-[#111] dark:to-[#151515]"
+      className="relative min-h-screen w-full overflow-hidden overflow-x-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-[#0a0a0a] dark:via-[#111] dark:to-[#151515]"
     >
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0 opacity-10 dark:opacity-5">
@@ -142,7 +142,7 @@ const Contact = () => {
             <FiMessageCircle className="text-primary mr-2" />
             <span className="text-sm font-medium text-primary">Get in Touch</span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white tracking-tight">
             Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-500">Connect</span>
           </h1>
           <motion.div

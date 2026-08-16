@@ -97,7 +97,7 @@ const Doctors = () => {
       ref={ref}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-screen w-full bg-gradient-to-br from-[#f8fafc] to-[#f0f4f8] dark:from-[#0f172a] dark:to-[#1e293b] py-12 px-4 sm:px-6 lg:px-8"
+      className="min-h-screen w-full overflow-x-hidden bg-gradient-to-br from-[#f8fafc] to-[#f0f4f8] dark:from-[#0f172a] dark:to-[#1e293b] py-12 px-4 sm:px-6 lg:px-8"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}

@@ -202,7 +202,7 @@ const Appointment = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900"
+        className="min-h-screen overflow-x-hidden bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900"
       >
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white py-3">
@@ -452,7 +452,7 @@ const Appointment = () => {
                             setSlotIndex(index);
                             setSlotTime(""); // Reset time selection when date changes
                           }}
-                          className={`flex flex-col items-center justify-center min-w-[100px] p-4 rounded-xl cursor-pointer transition-all ${
+                          className={`flex flex-col items-center justify-center min-w-[88px] sm:min-w-[100px] p-3 sm:p-4 rounded-xl cursor-pointer transition-all ${
                             slotIndex === index
                               ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg"
                               : "bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600"
